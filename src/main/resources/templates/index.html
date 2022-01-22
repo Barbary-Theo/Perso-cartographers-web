@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script>
+
+        let cartographers = {
+            store: null,
+            handleFunction: null,
+            displayFunction: null,
+            helperFunction: null
+        }
+
+
+        /* Initialize store */
+
+        cartographers.store = {
+            nbMultiPlayer: 2
+        }
+
+
+        /* Initialize display function */
+
+        cartographers.displayFunction = {
+
+            selectMultiChange: () => {
+                cartographers.store.nbMultiPlayer = $("#nbMulti").val()
+                let addPlayer =  $("#addPlayer");
+                addPlayer.empty();
+
+                for(let i=0 ; i<cartographers.store.nbMultiPlayer  ; i++) {
+                    addPlayer.append(`
+                        <div class="container-fluid">
+                            <div class="row">
+                                <p style="text-align: center"> Joueur ${i + 1}</p>
+                                <div class="input-group mb-3 col-sm-12">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Nom</span>
+                                  </div>
+                                  <input id="name${i}" type="text" class="form-control" placeholder="Nom" aria-label="Nom" aria-describedby="basic-addon1">
+                                </div>
+                                <div class="input-group mb-3 col-sm-12">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Titre</span>
+                                  </div>
+                                  <input id="title${i}" type="text" class="form-control" placeholder="Titre" aria-label="Titre" aria-describedby="basic-addon1">
+                                </div>
+
+                            </div>
+                        </div>
+                    `);
+                }
+
+            }
+
+        }
+
+
+        cartographers.handleFunction = {
+
+            multiValide: () => {
+
+                for(let i=0; i<cartographers.store.nbMultiPlayer ; i++){
+                    console.log($("#name"+i).val())
+                    console.log($("#title"+i).val())
+                }
+
+                // Ajax requests to change page and init the game
+            }
+
+        }
+
+        /* Initialize helper function */
+
+        cartographers.helperFunction = {
+
+            initEvents: () => {
+                $("#multi").click(function() {
+                    $('#modal-container-multi').show();
+                    cartographers.displayFunction.selectMultiChange();
+                })
+
+                $("#closeButton").click(function() {
+                    $('#modal-container-multi').hide();
+                })
+
+                $("#multiValide").click(function() {
+                    cartographers.handleFunction.multiValide();
+                    $('#modal-container-multi').hide();
+                })
+
+                $("#nbMulti").change(function() {
+                    cartographers.displayFunction.selectMultiChange();
+                })
+            }
+        }
+
+
+        /* Initialize screen */
+
+        $(document).ready(function() {
+
+            cartographers.helperFunction.initEvents();
+
+        })
+
+
+
+    </script>
+
+    <style>
+
+        body {
+            background-color: #C5CDC5;
+        }
+
+        .main {
+            width: 47%;
+            margin: 7% auto auto;
+            background: #D7EDF0;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+            text-align: center;
+        }
+
+        .back-main {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            background-size: cover;
+            background-image: url("/Image/cartographers.png");
+        }
+
+        .contain {
+            padding-top: 24%;
+            text-align: center;
+            color: white;
+        }
+
+        .btn {
+            margin-top: 2.5%;
+            margin-bottom: 2.5%;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+
+    </style>
+
+</head>
+<body>
+    <div class="main">
+        <div class="back-main">
+
+            <div class="contain container-fluid">
+                <div class="row">
+
+                    <button class="btn btn-primary col-sm-10 offset-1" id="solo"> Mode solo </button>
+                    <button class="btn btn-success col-sm-10 offset-1" id="multi"> Multijoueur local </button>
+                    <button class="btn btn-warning col-sm-10 offset-1" id="IA"> Jouer contre des IA </button>
+                    <button class="btn btn-secondary col-sm-10 offset-1" id="save"> Reprise d'une ancienne sauvegarde </button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div th:replace="fragments/multi-modal :: popup-multi"></div>
+
+</body>
+</html>

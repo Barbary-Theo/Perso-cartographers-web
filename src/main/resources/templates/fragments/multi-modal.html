@@ -1,0 +1,34 @@
+<div th:fragment="popup-multi">
+    <div class="modal custom" id="modal-container-multi" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-md modal-overlay" role="document">
+            <div class="modal-content content">
+                <div class="modal-header">
+                    <h1> Combien de g@merz ? </h1>
+
+                </div>
+                <div class="modal-body">
+
+                    <div class="container-fluid">
+                        <div class="row">
+
+                            <select id="nbMulti" class="form-select form-select-lg mb-3 col-sm-8 offset-2" aria-label=".form-select-lg example">
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+
+                            <div id="addPlayer">
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" id="multiValide">Valider</button>
+                    <button class="btn btn-warning" id="closeButton">Retour</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
