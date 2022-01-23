@@ -25,7 +25,7 @@
         }
 
         .decretImg {
-            width: 30%;
+            width: 26.5%;
             height: auto;
             margin: 0.5%;
         }
@@ -38,8 +38,12 @@
             margin-top: 2.5%;
         }
 
+        .todo {
+            margin-top: 17%;
+        }
+
         .cardTodo {
-            height: 17%;
+            height: 80%;
             width: auto;
             margin: 0.5%;
         }
@@ -126,7 +130,7 @@
         $(document).ready(function() {
             cartographers.displayFunction.displayCurrentPlayerInformation();
             cartographers.displayFunction.displayCurrentCardToDo();
-            cartographers.displayFunction.displaySeasonAndDecret();
+            //cartographers.displayFunction.displaySeasonAndDecret();
         })
 
 
@@ -158,14 +162,17 @@
       <hr style="width: 45%; position: absolute; left: 3px;"/>
 
 
+      <div class="container-fluid">
+          <div class="row">
+              <div id="map" class="map col-sm-6">
 
-          <div id="map" class="map">
+              </div>
 
+              <div class="row todo col-sm-6" id="todo">
+
+              </div>
           </div>
-
-          <div class="row todo" id="todo">
-
-          </div>
+      </div>
 
 
 
