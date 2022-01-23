@@ -19,7 +19,7 @@ public class MonstreCard extends GameCard {
         return 0;
     }
 
-    public MonstreCard(File image, boolean type_rotation, int num) {
+    public MonstreCard(String image, boolean type_rotation, int num) {
         super(image);
         this.type_rotation = type_rotation;
         this.num = num;

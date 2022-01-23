@@ -8,7 +8,7 @@ public abstract class GameCard extends Card {
     protected Map m;
     protected int duree;
 
-    public GameCard(File image) {
+    public GameCard(String image) {
         super(image);
         this.m = null;
     }

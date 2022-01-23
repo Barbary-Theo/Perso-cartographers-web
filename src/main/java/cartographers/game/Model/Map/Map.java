@@ -1,5 +1,8 @@
 package cartographers.game.Model.Map;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Map {
 
     private int nbRow;
@@ -45,6 +48,57 @@ public class Map {
     }
 
 
+    public void rotateCarte() {
+
+        Case[][] matt = new Case[this.getNbColumn()][this.getNbRow()];
+        Case[] row;
+
+        var lignee = new ArrayList<Case>();
+        var column = new ArrayList<ArrayList<Case>>();
+
+        for (int k=0 ; k< this.getNbColumn() ;k++){
+            lignee = new ArrayList<>();
+            for (int i=0 ; i< this.getNbRow() ; i++){
+                lignee.add(this.getMap()[i][k]);
+            }
+            column.add(lignee);
+        }
+
+        for(ArrayList<Case> ligneee : column){
+            Collections.reverse(ligneee);
+        }
+
+        for(int i=0 ; i<column.size() ; i++){
+            row = new Case[this.getNbRow()];
+            for(int j=0 ; j<column.get(i).size() ; j++){
+                row[j] = column.get(i).get(j);
+            }
+            matt[i] = row;
+
+        }
+
+        this.nbRow = matt.length;
+        this.nbColumn = matt[0].length ;
+        map = matt;
+
+    }
+
+    public void reverseCarte(){
+        var M = this;
+
+        Map nouveau = new Map(M.getNbRow(),M.getNbColumn());
+
+        for(int i=0 ; i<M.getNbRow() ; i++){
+            for(int j=0 ; j<M.getNbColumn() ; j++){
+
+                nouveau.changerCase(i, M.getNbColumn()-1-j,M.getMap()[i][j].getType());
+
+            }
+        }
+
+        this.map = nouveau.getMap();
+    }
+    
     public int getNbRow() {
         return nbRow;
     }

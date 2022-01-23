@@ -13,7 +13,7 @@ public class MainController {
 
     @GetMapping
     public String getMappingPage(Model model){
-        model.addAttribute("players", Game.getInstance().getPlayers());
+        model.addAttribute("game", Game.getInstance());
         return "main";
     }
 

@@ -7,7 +7,7 @@ public abstract class ExplorationCard extends GameCard {
 
     protected Map m;
 
-    public ExplorationCard(File image, int duree) {
+    public ExplorationCard(String image, int duree) {
         super(image);
         this.duree = duree;
     }

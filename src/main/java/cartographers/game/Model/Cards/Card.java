@@ -4,13 +4,13 @@ import java.io.File;
 import java.io.Serializable;
 
 public abstract class Card implements Serializable {
-    protected File image;
+    protected String image;
 
-    public Card(File image) {
+    public Card(String image) {
         this.image = image;
     }
 
-    public File getImage(){
+    public String getImage(){
         return this.image;
     }
 }

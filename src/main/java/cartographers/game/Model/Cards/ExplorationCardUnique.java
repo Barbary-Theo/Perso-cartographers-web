@@ -10,7 +10,7 @@ public class ExplorationCardUnique extends ExplorationCard {
     protected String type;
 
 
-    public ExplorationCardUnique(File image, int duree, String t) {
+    public ExplorationCardUnique(String image, int duree, String t) {
         super(image,duree);
         type=t;
         this.ListMap = new ArrayList<>();

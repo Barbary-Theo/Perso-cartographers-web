@@ -3,7 +3,7 @@ package cartographers.game.Model.Cards;
 import java.io.File;
 
 public class TempleCard extends GameCard {
-    public TempleCard(File image) {
+    public TempleCard(String image) {
         super(image);
         super.duree=0;
     }

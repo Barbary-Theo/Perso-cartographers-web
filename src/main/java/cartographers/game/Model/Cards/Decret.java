@@ -10,7 +10,7 @@ public class Decret extends Card {
     protected Map m;
     protected String description;
 
-    public Decret(File image, String description) {super(image);this.description = description;}
+    public Decret(String image, String description) {super(image);this.description = description;}
 
     public Map getMap(){return this.m;}
 
@@ -24,7 +24,7 @@ public class Decret extends Card {
     public int Verif_Point(Map map){
 
         int score = 0;
-        if (super.image.getName().equals("26Use.jpg")) {
+        if (super.image.equals("26Use.jpg")) {
 
             for (int i = 0; i < map.getNbRow(); i++) {
                 for (int j = 0; j < map.getNbColumn(); j++) {
@@ -41,7 +41,7 @@ public class Decret extends Card {
             }
         }
 
-        else if (super.image.getName().equals("27Use.jpg")) {
+        else if (super.image .equals("27Use.jpg")) {
 
             for (int i = 0; i < map.getNbRow(); i++) {
                 for (int j = 0; j < map.getNbColumn(); j++) {
@@ -54,7 +54,7 @@ public class Decret extends Card {
 
         }
 
-        else if (super.image.getName().equals("28Use.jpg")) {
+        else if (super.image .equals("28Use.jpg")) {
             for (int i = 0; i < map.getNbRow(); i++) {
                 for (int j = 0; j < map.getNbColumn(); j++) {
 
@@ -100,7 +100,7 @@ public class Decret extends Card {
 
         }
 
-        else if (super.image.getName().equals("30Use.jpg")){
+        else if (super.image .equals("30Use.jpg")){
 
             for (int i = 0; i < map.getNbRow(); i++) {
                 for (int j = 0; j < map.getNbColumn(); j++) {
@@ -185,7 +185,7 @@ public class Decret extends Card {
             }
         }
 
-        else if (super.image.getName().equals("31Use.jpg")){
+        else if (super.image .equals("31Use.jpg")){
             for (int i = 0; i < map.getNbRow(); i++) {
                 for (int j = 0; j < map.getNbColumn(); j++) {
 
@@ -270,7 +270,7 @@ public class Decret extends Card {
             }
         }
 
-        else if (super.image.getName().equals("32Use.jpg")){
+        else if (super.image .equals("32Use.jpg")){
             for (int i = 0; i < map.getNbRow(); i++) {
                 for (int j = 0; j < map.getNbColumn(); j++) {
 
@@ -394,7 +394,7 @@ public class Decret extends Card {
         }
 
         /*
-        else if (super.image.getName()=="33.png"){
+        else if (super.image =="33.png"){
             for (int i = 0; i < map.getNbRow(); i++) {
                 for (int j = 0; j < map.getNbColumn(); j++) {
 
@@ -465,7 +465,7 @@ public class Decret extends Card {
         et vérifier que c'est bien vide autour du duo -> la 33
          */
 
-        else if (super.image.getName().equals("34Use.jpg")){
+        else if (super.image .equals("34Use.jpg")){
             ArrayList<Integer> liste = new ArrayList<>();
             int res = 0;
             for (int i=0 ; i< map.getNbRow() ; i++){
@@ -490,7 +490,7 @@ public class Decret extends Card {
             }
         }
 
-        else if (super.image.getName().equals("35Use.jpg")){
+        else if (super.image .equals("35Use.jpg")){
 
             ArrayList<Integer> quartier = new ArrayList<>();
 
@@ -515,7 +515,7 @@ public class Decret extends Card {
             }
         }
 
-        else if (super.image.getName().equals("36Use.jpg")){
+        else if (super.image .equals("36Use.jpg")){
             ArrayList<ArrayList<String>> liste = new ArrayList<>();
 
             for (int i = 0; i < map.getNbRow(); i++) {
@@ -541,7 +541,7 @@ public class Decret extends Card {
             }
         }
 
-        else if (super.image.getName().equals("37Use.jpg")){
+        else if (super.image .equals("37Use.jpg")){
             ArrayList<Integer> quartier = new ArrayList<>();
 
             for (int i = 0; i < map.getNbRow(); i++) {
@@ -566,7 +566,7 @@ public class Decret extends Card {
             if(quartier.size()>1) score = quartier.get(quartier.size()-2)*2;
         }
 
-        else if (super.image.getName().equals("38Use.jpg")){
+        else if (super.image .equals("38Use.jpg")){
             for (int i = 0; i < map.getNbRow(); i++) {
                 int t = 0;
                 for (int j = 0; j < map.getNbColumn(); j++) {
@@ -592,7 +592,7 @@ public class Decret extends Card {
         }
 
         /* Pas fini, traîte pas les cas certains cas où il y a des trucs autour.
-        else if (super.image.getName()=="39.png"){
+        else if (super.image =="39.png"){
             ArrayList<Integer> liste = new ArrayList<>();
             int score2 = 0;
             int m = 0;
@@ -637,7 +637,7 @@ public class Decret extends Card {
         }
         */
 
-        else if (super.image.getName().equals("40Use.jpg")){
+        else if (super.image .equals("40Use.jpg")){
             for (int i = 0; i < map.getNbRow(); i++) {
                 int j=0;
                 int t=0;
@@ -654,7 +654,7 @@ public class Decret extends Card {
             }
         }
 
-        else if (super.image.getName().equals("41Use.jpg")){
+        else if (super.image .equals("41Use.jpg")){
             for (int i = 0; i < map.getNbRow(); i++) {
                 for (int j = 0; j < map.getNbColumn(); j++) {
                     if (map.getMap()[i][j].getType().equals("Vide")) {

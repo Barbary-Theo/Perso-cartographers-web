@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class ExplorationCardChoice extends ExplorationCard {
     private ArrayList<String> ListChoix;
 
-    public ExplorationCardChoice(File image, int duree){
+    public ExplorationCardChoice(String image, int duree){
         super(image,duree);
         this.ListChoix = new ArrayList<>();
     }

@@ -8,7 +8,7 @@ public class Season extends Card {
     protected ArrayList<Decret> decrets;
     protected int dureeSaison;
 
-    public Season(File image, int dureeSaison, int numSaison) {
+    public Season(String image, int dureeSaison, int numSaison) {
         super(image);
         this.numSaison = numSaison;
         this.decrets = new ArrayList<>();
