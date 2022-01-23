@@ -11,6 +11,42 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+
+    <style>
+
+        body {
+            background-color: #C5CDC5;
+        }
+
+        .decrets {
+            position: absolute;
+            right: 1px;
+            top: 1px;
+        }
+
+        .decretImg {
+            width: 31.5%;
+            height: auto;
+            margin: 0.5%;
+        }
+
+        .title {
+            text-align: center;
+        }
+
+        .map {
+            margin-top: 2.5%;
+        }
+
+        .cardTodo {
+            width: 17%;
+            height: auto;
+            margin: 0.5%;
+        }
+
+    </style>
+
+
     <script th:inline="javascript">
         /*<![CDATA[*/
 
@@ -31,6 +67,40 @@
         /* Initialize display function */
 
         cartographers.displayFunction = {
+
+            displayCurrentPlayerInformation: () => {
+                let currentPlayer = cartographers.store.game.currentPlayer;
+
+                $("#player").text(currentPlayer.name);
+                $("#title").text(currentPlayer.title);
+                let map = $("#map");
+
+                for(let i=0 ; i<currentPlayer.map.nbRow ; i++) {
+                    let row = `<div class="col-sm-12"> `;
+                    for(let j=0 ; j<currentPlayer.map.nbColumn ; j++) {
+                        row += `<img src="Icone/${currentPlayer.map.map[i][j].type}.png" alt="vv" style="width: 3.7%; height: auto"/>`;
+                    }
+                    row += `</div>`;
+                    map.append(row);
+                }
+
+            },
+
+            displaySeasonAndDecret: () => {
+                let season = cartographers.store.game.currentSeason;
+                let decretDiv = $("#decrets");
+
+                decretDiv.append(`<img src="${season.image}" class="decretImg" alt="vv"/>`)
+                decretDiv.append(`<img src="${season.decrets[0].image}" class="decretImg" alt="vv"/>`)
+                decretDiv.append(`<img src="${season.decrets[1].image}" class="decretImg" alt="vv"/>`)
+            },
+
+            displayCurrentCardToDo: () => {
+                let currentCard = cartographers.store.game.currentCard;
+                let todoDiv = $("#todo");
+
+                todoDiv.append(`<img src="${currentCard.image}" class="cardTodo card" alt="vv"/>`)
+            }
 
 
         }
@@ -54,8 +124,9 @@
         /* Initialize screen */
 
         $(document).ready(function() {
-
-
+            cartographers.displayFunction.displayCurrentPlayerInformation();
+            cartographers.displayFunction.displayCurrentCardToDo();
+            // cartographers.displayFunction.displaySeasonAndDecret();
         })
 
 
@@ -64,9 +135,52 @@
 
 </head>
 <body>
-  <h1> YOff </h1>
-    <button id="test" type="button" class="btn btn-primary"> oui </button>
-    <img th:src="'Icone/Bois.png'" alt="vv" style="width: 5%; height: auto"/>
+
+
+      <div class="container-fluid">
+          <div class="row">
+
+              <div class="col-sm-6">
+
+                  <div class="container-fluid">
+                      <div class="row title">
+                          <h1 class="col-sm-4" id="player"> player </h1>
+                          <h1 class="col-sm-4 offset-2" id="title"> title </h1>
+                      </div>
+                  </div>
+              </div>
+
+
+          </div>
+      </div>
+
+
+      <hr style="width: 45%; position: absolute; left: 3px;"/>
+
+
+
+          <div id="map" class="map">
+
+          </div>
+
+          <div class="row todo" id="todo">
+
+          </div>
+
+
+
+      <div class="container-fluid">
+          <div class="row score" id="score">
+          </div>
+      </div>
+
+
+      <div class="decrets" id="decrets">
+
+      </div>
+
+
+
 
 </body>
 </html>

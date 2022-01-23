@@ -19,9 +19,9 @@ public class Game {
     protected ArrayList<Season> seasons = new ArrayList<>();
 
     protected GameCard impossibleCard;
-    protected GameCard current_card;
-    protected Player current_player;
-    protected Season current_season;
+    protected GameCard currentCard;
+    protected Player currentPlayer;
+    protected Season currentSeason;
 
 
     private static final String pathImg = "src/main/resources/public/";
@@ -35,12 +35,12 @@ public class Game {
 
         /* init players */
         this.players = players;
-        current_player = players.get(0);
+        currentPlayer = players.get(0);
 
         Random r=new Random();
         int indice = r.nextInt(gameCards.size()-1);
 
-        current_card = gameCards.get(indice);
+        currentCard = gameCards.get(indice);
         gameCards.remove(indice);
 
         /* init decret */
@@ -67,7 +67,7 @@ public class Game {
         seasons.get(2).getDecrets().add(d);
         seasons.get(3).getDecrets().add(d);
         seasons.get(3).getDecrets().add(a);
-        current_season = seasons.get(0);
+        currentSeason = seasons.get(0);
 
     }
 
@@ -91,7 +91,7 @@ public class Game {
     public void start(){
         this.gameCards.addAll(Explo_unique());
         this.gameCards.addAll(Explo_Choix());
-        this.monstreCards.addAll(Monstre());
+        this.monstreCards.addAll(monstre());
         this.gameCards.addAll(Ruine());
         this.seasons = Saisons();
     }
@@ -110,7 +110,7 @@ public class Game {
     }
 
     public ArrayList<GameCard> Explo_unique(){
-        String path = "Cards/Exploration/Uniques";
+        String path = "Cards/Exploration/Uniques/";
         File p =new File(pathImg + path);
         File[] dossier=p.listFiles(); //Liste contenant tous les dossiers du fichier dans le chemin de la variable chemin
         ArrayList<File> ls=new ArrayList<>();
@@ -122,56 +122,56 @@ public class Game {
         ExplorationCardUnique c;
         for(File i : ls) {
             if (i.getName().charAt(2) == 'E'){ //On teste si la premiere lettre est un E
-                c=new ExplorationCardUnique(path + i.getName(), 1, "Eau");
+                c=new ExplorationCardUnique(path + i.getName(), 1, "water");
                 Map m1=new Map(3,1);
-                m1.changerCase(0,0,"Eau");
-                m1.changerCase(1,0,"Eau");
-                m1.changerCase(2,0,"Eau");
+                m1.changerCase(0,0,"water");
+                m1.changerCase(1,0,"water");
+                m1.changerCase(2,0,"water");
                 Map m2=new Map(3,3);
-                m2.changerCase(2,0,"Eau");
-                m2.changerCase(1,1,"Eau");
-                m2.changerCase(2,1,"Eau");
-                m2.changerCase(0,2,"Eau");
-                m2.changerCase(1,2,"Eau");
+                m2.changerCase(2,0,"water");
+                m2.changerCase(1,1,"water");
+                m2.changerCase(2,1,"water");
+                m2.changerCase(0,2,"water");
+                m2.changerCase(1,2,"water");
                 c.setListMap(m1,m2);
                 lc.add(c);
             } else if (i.getName().charAt(2) == 'B') {
-                c=new ExplorationCardUnique(path + i.getName(), 1, "Bois");
+                c=new ExplorationCardUnique(path + i.getName(), 1, "wood");
                 Map m1=new Map(2,2);
-                m1.changerCase(0,0,"Bois");
-                m1.changerCase(1,1,"Bois");
+                m1.changerCase(0,0,"wood");
+                m1.changerCase(1,1,"wood");
                 Map m2=new Map(3,2);
-                m2.changerCase(0,0,"Bois");
-                m2.changerCase(1,0,"Bois");
-                m2.changerCase(1,1,"Bois");
-                m2.changerCase(2,1,"Bois");
+                m2.changerCase(0,0,"wood");
+                m2.changerCase(1,0,"wood");
+                m2.changerCase(1,1,"wood");
+                m2.changerCase(2,1,"wood");
                 c.setListMap(m1,m2);
                 lc.add(c);
             } else if (i.getName().charAt(2) == 'F') {
-                c=new ExplorationCardUnique(path + i.getName(), 1, "Ferme");
+                c=new ExplorationCardUnique(path + i.getName(), 1, "ferme");
                 Map m1=new Map(2,1);
-                m1.changerCase(0,0,"Ferme");
-                m1.changerCase(1,0,"Ferme");
+                m1.changerCase(0,0,"ferme");
+                m1.changerCase(1,0,"ferme");
                 Map m2=new Map(3,3);
-                m2.changerCase(0,1,"Ferme");
-                m2.changerCase(1,0,"Ferme");
-                m2.changerCase(1,1,"Ferme");
-                m2.changerCase(1,2,"Ferme");
-                m2.changerCase(2,1,"Ferme");
+                m2.changerCase(0,1,"ferme");
+                m2.changerCase(1,0,"ferme");
+                m2.changerCase(1,1,"ferme");
+                m2.changerCase(1,2,"ferme");
+                m2.changerCase(2,1,"ferme");
                 c.setListMap(m1,m2);
                 lc.add(c);
             } else if (i.getName().charAt(2) == 'M') {
-                c=new ExplorationCardUnique(path + i.getName(), 1, "Maison");
+                c=new ExplorationCardUnique(path + i.getName(), 1, "home");
                 Map m1=new Map(2,2);
-                m1.changerCase(0,0,"Maison");
-                m1.changerCase(1,0,"Maison");
-                m1.changerCase(1,1,"Maison");
+                m1.changerCase(0,0,"home");
+                m1.changerCase(1,0,"home");
+                m1.changerCase(1,1,"home");
                 Map m2=new Map(2,3);
-                m2.changerCase(0,0,"Maison");
-                m2.changerCase(0,1,"Maison");
-                m2.changerCase(0,2,"Maison");
-                m2.changerCase(1,0,"Maison");
-                m2.changerCase(1,1,"Maison");
+                m2.changerCase(0,0,"home");
+                m2.changerCase(0,1,"home");
+                m2.changerCase(0,2,"home");
+                m2.changerCase(1,0,"home");
+                m2.changerCase(1,1,"home");
                 c.setListMap(m1,m2);
                 lc.add(c);
             }
@@ -180,7 +180,7 @@ public class Game {
     }
 
     public ArrayList<GameCard> Explo_Choix(){
-        String path = "Cards/Exploration/Choix";
+        String path = "Cards/Exploration/Choix/";
         File p=new File(pathImg + path);
         File[] dossier=p.listFiles();
         ArrayList<File> ls=new ArrayList<>();
@@ -193,86 +193,86 @@ public class Game {
 
             if (i.getName().equals("C.jpg")) {
                 ExplorationCardChoice c = new ExplorationCardChoice(path + i.getName(),0);
-                c.getListChoix().add("Eau");
-                c.getListChoix().add("Bois");
-                c.getListChoix().add("Ferme");
-                c.getListChoix().add("Maison");
-                c.getListChoix().add("Monstre");
+                c.getListChoix().add("water");
+                c.getListChoix().add("wood");
+                c.getListChoix().add("ferme");
+                c.getListChoix().add("home");
+                c.getListChoix().add("monstre");
                 Map m= new Map(1,1);
-                m.changerCase(0,0,"Bois");
+                m.changerCase(0,0,"wood");
                 c.setM(m);
                 this.impossibleCard = c;
                 lc.add(c);
             } else if (i.getName().equals("B_E.jpg") ) {
                 ExplorationCardChoice c = new ExplorationCardChoice(path + i.getName(),2);
-                c.getListChoix().add("Eau");
-                c.getListChoix().add("Bois");
+                c.getListChoix().add("water");
+                c.getListChoix().add("wood");
                 Map m= new Map(3,3);
-                m.changerCase(0,0,"Bois");
-                m.changerCase(1,0,"Bois");
-                m.changerCase(2,0,"Bois");
-                m.changerCase(1,1,"Bois");
-                m.changerCase(1,2,"Bois");
+                m.changerCase(0,0,"wood");
+                m.changerCase(1,0,"wood");
+                m.changerCase(2,0,"wood");
+                m.changerCase(1,1,"wood");
+                m.changerCase(1,2,"wood");
                 c.setM(m);
                 lc.add(c);
             } else if (i.getName().equals("B_F.jpg")) {
                 ExplorationCardChoice c = new ExplorationCardChoice(path + i.getName(),2);
-                c.getListChoix().add("Ferme");
-                c.getListChoix().add("Bois");
+                c.getListChoix().add("ferme");
+                c.getListChoix().add("wood");
                 Map m= new Map(2,3);
-                m.changerCase(0,0,"Bois");
-                m.changerCase(0,1,"Bois");
-                m.changerCase(0,2,"Bois");
-                m.changerCase(1,2,"Bois");
+                m.changerCase(0,0,"wood");
+                m.changerCase(0,1,"wood");
+                m.changerCase(0,2,"wood");
+                m.changerCase(1,2,"wood");
                 c.setM(m);
                 lc.add(c);
             } else if (i.getName().equals("B_M.jpg")) {
                 ExplorationCardChoice c = new ExplorationCardChoice(path + i.getName(),2);
-                c.getListChoix().add("Maison");
-                c.getListChoix().add("Bois");
+                c.getListChoix().add("home");
+                c.getListChoix().add("wood");
                 Map m= new Map(2,4);
-                m.changerCase(0,2,"Bois");
-                m.changerCase(0,3,"Bois");
-                m.changerCase(1,0,"Bois");
-                m.changerCase(1,1,"Bois");
-                m.changerCase(1,2,"Bois");
+                m.changerCase(0,2,"wood");
+                m.changerCase(0,3,"wood");
+                m.changerCase(1,0,"wood");
+                m.changerCase(1,1,"wood");
+                m.changerCase(1,2,"wood");
                 c.setM(m);
                 lc.add(c);
             }
             else if (i.getName().equals("F_E.jpg")) {
                 ExplorationCardChoice c = new ExplorationCardChoice(path + i.getName(), 2);
-                c.getListChoix().add("Ferme");
-                c.getListChoix().add("Eau");
+                c.getListChoix().add("ferme");
+                c.getListChoix().add("water");
                 Map m= new Map(3,3);
-                m.changerCase(0,0,"Eau");
-                m.changerCase(1,0,"Eau");
-                m.changerCase(2,0,"Eau");
-                m.changerCase(0,1,"Eau");
-                m.changerCase(0,2,"Eau");
+                m.changerCase(0,0,"water");
+                m.changerCase(1,0,"water");
+                m.changerCase(2,0,"water");
+                m.changerCase(0,1,"water");
+                m.changerCase(0,2,"water");
                 c.setM(m);
                 lc.add(c);
             }
             else if (i.getName().equals("M_E.jpg")) {
                 ExplorationCardChoice c = new ExplorationCardChoice(path + i.getName(), 2);
-                c.getListChoix().add("Maison");
-                c.getListChoix().add("Eau");
+                c.getListChoix().add("home");
+                c.getListChoix().add("water");
                 Map m= new Map(1,4);
-                m.changerCase(0,0,"Eau");
-                m.changerCase(0,1,"Eau");
-                m.changerCase(0,2,"Eau");
-                m.changerCase(0,3,"Eau");
+                m.changerCase(0,0,"water");
+                m.changerCase(0,1,"water");
+                m.changerCase(0,2,"water");
+                m.changerCase(0,3,"water");
                 c.setM(m);
                 lc.add(c);
             }
             else if (i.getName().equals("M_F.jpg")) {
                 ExplorationCardChoice c = new ExplorationCardChoice(path + i.getName(), 2);
-                c.getListChoix().add("Maison");
-                c.getListChoix().add("Ferme");
+                c.getListChoix().add("home");
+                c.getListChoix().add("ferme");
                 Map m= new Map(3,2);
-                m.changerCase(0,0,"Maison");
-                m.changerCase(1,0,"Maison");
-                m.changerCase(2,0,"Maison");
-                m.changerCase(1,1,"Maison");
+                m.changerCase(0,0,"home");
+                m.changerCase(1,0,"home");
+                m.changerCase(2,0,"home");
+                m.changerCase(1,1,"home");
                 c.setM(m);
                 lc.add(c);
             }
@@ -280,8 +280,8 @@ public class Game {
         return lc;
     }
 
-    public ArrayList<MonstreCard> Monstre(){
-        String path = "Cards/Monstres";
+    public ArrayList<MonstreCard> monstre(){
+        String path = "Cards/Monstres/";
         File p=new File(pathImg + path);
         File[] dossier=p.listFiles();
         ArrayList<File> ls=new ArrayList<>();
@@ -294,9 +294,9 @@ public class Game {
             if(i.getName().equals("01.jpg")){
                 MonstreCard c =new MonstreCard(path + i.getName(),true,4);
                 Map m = new Map(3,3);
-                m.changerCase(0,0,"Monstre");
-                m.changerCase(1,1,"Monstre");
-                m.changerCase(2,2,"Monstre");
+                m.changerCase(0,0,"monstre");
+                m.changerCase(1,1,"monstre");
+                m.changerCase(2,2,"monstre");
                 c.setM(m);
                 lc.add(c);
             }
@@ -304,31 +304,31 @@ public class Game {
             else if(i.getName().equals("02.jpg")){
                 MonstreCard c =new MonstreCard(path + i.getName(),false,2);
                 Map m = new Map(2,3);
-                m.changerCase(0,0,"Monstre");
-                m.changerCase(1,0,"Monstre");
-                m.changerCase(0,2,"Monstre");
-                m.changerCase(1,2,"Monstre");
+                m.changerCase(0,0,"monstre");
+                m.changerCase(1,0,"monstre");
+                m.changerCase(0,2,"monstre");
+                m.changerCase(1,2,"monstre");
                 c.setM(m);
                 lc.add(c);
             }
             else if(i.getName().equals("03.jpg")){
                 MonstreCard c =new MonstreCard(path + i.getName(),false,3);
                 Map m = new Map(3,2);
-                m.changerCase(0,0,"Monstre");
-                m.changerCase(1,0,"Monstre");
-                m.changerCase(1,1,"Monstre");
-                m.changerCase(2,0,"Monstre");
+                m.changerCase(0,0,"monstre");
+                m.changerCase(1,0,"monstre");
+                m.changerCase(1,1,"monstre");
+                m.changerCase(2,0,"monstre");
                 c.setM(m);
                 lc.add(c);
             }
             else if(i.getName().equals("04.jpg")){
                 MonstreCard c =new MonstreCard(path + i.getName(),true,1);
                 Map m = new Map(3,2);
-                m.changerCase(0,0,"Monstre");
-                m.changerCase(1,0,"Monstre");
-                m.changerCase(2,0,"Monstre");
-                m.changerCase(0,1,"Monstre");
-                m.changerCase(2,1,"Monstre");
+                m.changerCase(0,0,"monstre");
+                m.changerCase(1,0,"monstre");
+                m.changerCase(2,0,"monstre");
+                m.changerCase(0,1,"monstre");
+                m.changerCase(2,1,"monstre");
                 c.setM(m);
                 lc.add(c);
             }
@@ -337,7 +337,7 @@ public class Game {
     }
 
     public ArrayList<GameCard> Ruine(){
-        String path = "Cards/Ruines";
+        String path = "Cards/Ruines/";
         File p=new File(pathImg + path);
         File[] dossier=p.listFiles();
         ArrayList<File> ls=new ArrayList<>();
@@ -353,7 +353,7 @@ public class Game {
     }
 
     public ArrayList<Card> Decret(){
-        String path = "Cards/Decret";
+        String path = "Cards/Decret/";
         File p=new File(pathImg + path);
         File[] dossier=p.listFiles();
         ArrayList<File> ls=new ArrayList<>();
@@ -367,197 +367,197 @@ public class Game {
             if (f.getName().equals("26.jpg")) {
                 c = new Decret(path + f.getName(),"<HTML> <p style='text-align:center;'> Gagnez un point de réputation <br>pour chaque espace de forêt adjacent <br>à un bord de map. </p> </HTML>");
                 Map m1 = new Map(4, 4);
-                m1.changerCase(0, 0, "Bois");
-                m1.changerCase(0, 2, "Bois");
-                m1.changerCase(0, 3, "Montagne");
-                m1.changerCase(1, 0, "Bois");
-                m1.changerCase(1, 1, "Bois");
-                m1.changerCase(1, 2, "Bois");
-                m1.changerCase(1, 3, "Montagne");
-                m1.changerCase(2, 0, "Montagne");
-                m1.changerCase(2, 1, "Montagne");
-                m1.changerCase(2, 2, "Montagne");
-                m1.changerCase(3, 2, "Montagne");
-                m1.changerCase(3, 3, "Montagne");
+                m1.changerCase(0, 0, "wood");
+                m1.changerCase(0, 2, "wood");
+                m1.changerCase(0, 3, "mountain");
+                m1.changerCase(1, 0, "wood");
+                m1.changerCase(1, 1, "wood");
+                m1.changerCase(1, 2, "wood");
+                m1.changerCase(1, 3, "mountain");
+                m1.changerCase(2, 0, "mountain");
+                m1.changerCase(2, 1, "mountain");
+                m1.changerCase(2, 2, "mountain");
+                m1.changerCase(3, 2, "mountain");
+                m1.changerCase(3, 3, "mountain");
                 c.setMap(m1);
                 lc.add(c);
             }
             if (f.getName().equals("27.jpg")) {
                 c = new Decret(path + f.getName(),"<HTML> <p style='text-align:center;'> Gagnez un point de réputation <br>pour chaque ligne et colonne avec <br>un moins un espace de forêt. <br>Un même espace de forêt peut être <br>comptabilisé dans une ligne<br> et une colonne.</p> </HTML>");
                 Map m1 = new Map(3, 4);
-                m1.changerCase(0, 0, "Bois");
-                m1.changerCase(0, 2, "Bois");
-                m1.changerCase(0, 3, "Montagne");
-                m1.changerCase(1, 0, "Bois");
-                m1.changerCase(1, 1, "Bois");
-                m1.changerCase(1, 2, "Bois");
-                m1.changerCase(1, 3, "Montagne");
-                m1.changerCase(2, 0, "Montagne");
-                m1.changerCase(2, 1, "Montagne");
-                m1.changerCase(2, 2, "Montagne");
+                m1.changerCase(0, 0, "wood");
+                m1.changerCase(0, 2, "wood");
+                m1.changerCase(0, 3, "mountain");
+                m1.changerCase(1, 0, "wood");
+                m1.changerCase(1, 1, "wood");
+                m1.changerCase(1, 2, "wood");
+                m1.changerCase(1, 3, "mountain");
+                m1.changerCase(2, 0, "mountain");
+                m1.changerCase(2, 1, "mountain");
+                m1.changerCase(2, 2, "mountain");
                 c.setMap(m1);
                 lc.add(c);
             }
             if (f.getName().equals("28.jpg")) {
                 c = new Decret(path + f.getName(),"<HTML> <p style='text-align:center;'> Gagnez un point de réputation <br>pour chaque espace de forêt <br>entouré sur ses quatres côtés <br>par un espace typé <br>ou par un bord de map.</p> </HTML>");
                 Map m1 = new Map(4, 4);
-                m1.changerCase(0, 0, "Bois");
-                m1.changerCase(0, 2, "Bois");
-                m1.changerCase(0, 3, "Montagne");
-                m1.changerCase(1, 0, "Bois");
-                m1.changerCase(1, 1, "Bois");
-                m1.changerCase(1, 2, "Bois");
-                m1.changerCase(1, 3, "Montagne");
-                m1.changerCase(2, 0, "Montagne");
-                m1.changerCase(2, 1, "Montagne");
-                m1.changerCase(2, 2, "Montagne");
-                m1.changerCase(3, 2, "Montagne");
-                m1.changerCase(3, 3, "Montagne");
+                m1.changerCase(0, 0, "wood");
+                m1.changerCase(0, 2, "wood");
+                m1.changerCase(0, 3, "mountain");
+                m1.changerCase(1, 0, "wood");
+                m1.changerCase(1, 1, "wood");
+                m1.changerCase(1, 2, "wood");
+                m1.changerCase(1, 3, "mountain");
+                m1.changerCase(2, 0, "mountain");
+                m1.changerCase(2, 1, "mountain");
+                m1.changerCase(2, 2, "mountain");
+                m1.changerCase(3, 2, "mountain");
+                m1.changerCase(3, 3, "mountain");
                 c.setMap(m1);
                 lc.add(c);
             }
             if (f.getName().equals("30.jpg")){
                 c = new Decret(path + f.getName(),"<HTML> <p style='text-align:center;'> Gagnez un point de réputation <br>pour chaque espace d'eau <br>adjacent par au moins <br>un espace de ferme et inversement.</p> </HTML>");
                 Map m1 = new Map(2, 2);
-                m1.changerCase(0, 0, "Ferme");
-                m1.changerCase(0, 1, "Eau");
-                m1.changerCase(1, 0, "Eau");
-                m1.changerCase(1, 1, "Montagne");
+                m1.changerCase(0, 0, "ferme");
+                m1.changerCase(0, 1, "water");
+                m1.changerCase(1, 0, "water");
+                m1.changerCase(1, 1, "mountain");
                 c.setMap(m1);
                 lc.add(c);
             }
             if (f.getName().equals("31.jpg")) {
                 c = new Decret(path + f.getName(),"<HTML> <p style='text-align:center;'> Gagnez deux points de réputation <br>pour chaque espace d'eau <br>adjacent à un espace de montagne <br>et gagnez un point de <br>réputation pour chaque espace <br>de ferme adjacent à un <br>espace de montagne.</p> </HTML>");
                 Map m1 = new Map(3, 3);
-                m1.changerCase(0, 0, "Ferme");
-                m1.changerCase(0, 1, "Eau");
-                m1.changerCase(0, 2, "Montagne");
-                m1.changerCase(1, 0, "Eau");
-                m1.changerCase(1, 1, "Montagne");
-                m1.changerCase(1, 2, "Ferme");
-                m1.changerCase(2, 0, "Eau");
-                m1.changerCase(2, 1, "Ferme");
-                m1.changerCase(2, 2, "Montagne");
+                m1.changerCase(0, 0, "ferme");
+                m1.changerCase(0, 1, "water");
+                m1.changerCase(0, 2, "mountain");
+                m1.changerCase(1, 0, "water");
+                m1.changerCase(1, 1, "mountain");
+                m1.changerCase(1, 2, "ferme");
+                m1.changerCase(2, 0, "water");
+                m1.changerCase(2, 1, "ferme");
+                m1.changerCase(2, 2, "mountain");
                 c.setMap(m1);
                 lc.add(c);
             }
             if (f.getName().equals("32.jpg")) {
                 c = new Decret(path + f.getName(),"<HTML> <p style='text-align:center;'> Gagnez un point de réputation <br>pour chaque espace d'eau adjacent <br>à un espace de ruine et <br>gagner trois points de <br>réputation pour chaque espace <br>de ferme sur un espace <br>de ruine.</p> </HTML>");
                 Map m1 = new Map(3, 3);
-                m1.changerCase(0, 0, "Ferme");
-                m1.changerCase(0, 1, "Eau");
-                m1.changerCase(0, 2, "Eau");
-                m1.changerCase(1, 0, "Ferme");
-                m1.changerCase(1, 1, "Temple");
-                m1.changerCase(1, 2, "Montagne");
-                m1.changerCase(2, 0, "Montagne");
-                m1.changerCase(2, 1, "Temple");
-                m1.changerCase(2, 2, "Eau");
+                m1.changerCase(0, 0, "ferme");
+                m1.changerCase(0, 1, "water");
+                m1.changerCase(0, 2, "water");
+                m1.changerCase(1, 0, "ferme");
+                m1.changerCase(1, 1, "temple");
+                m1.changerCase(1, 2, "mountain");
+                m1.changerCase(2, 0, "mountain");
+                m1.changerCase(2, 1, "temple");
+                m1.changerCase(2, 2, "water");
                 c.setMap(m1);
                 lc.add(c);
             }
             if (f.getName().equals("33.jpg")) {
                 c = new Decret(path + f.getName(),"<HTML> <p style='text-align:center;'> Gagnez trois points de réputation <br>pour chaque groupe d'espace <br>de ferme qui n'est <br>pas adjacent à un espace <br>d'eau ou au bord de <br>map, et de même pour un <br>espace d'eau.</p> </HTML>");
                 Map m1 = new Map(5, 5);
-                m1.changerCase(0, 0, "Ferme");
-                m1.changerCase(0, 1, "Ferme");
-                m1.changerCase(1, 2, "Eau");
-                m1.changerCase(1, 3, "Ferme");
-                m1.changerCase(2, 0, "Montagne");
-                m1.changerCase(2, 1, "Eau");
-                m1.changerCase(2, 2, "Eau");
-                m1.changerCase(2, 4, "Eau");
-                m1.changerCase(3, 4, "Eau");
-                m1.changerCase(4, 1, "Ferme");
-                m1.changerCase(4, 2, "Ferme");
+                m1.changerCase(0, 0, "ferme");
+                m1.changerCase(0, 1, "ferme");
+                m1.changerCase(1, 2, "water");
+                m1.changerCase(1, 3, "ferme");
+                m1.changerCase(2, 0, "mountain");
+                m1.changerCase(2, 1, "water");
+                m1.changerCase(2, 2, "water");
+                m1.changerCase(2, 4, "water");
+                m1.changerCase(3, 4, "water");
+                m1.changerCase(4, 1, "ferme");
+                m1.changerCase(4, 2, "ferme");
                 c.setMap(m1);
                 lc.add(c);
             }
             if (f.getName().equals("34.jpg")) {
                 c = new Decret(path + f.getName(),"<HTML> <p style='text-align:center;'> Gagnez huit points de réputation <br>pour chaque groupe de six <br>espaces de maison ou plus.</p> </HTML>");
                 Map m1 = new Map(3, 2);
-                m1.changerCase(0, 0, "Maison");
-                m1.changerCase(0, 1, "Maison");
-                m1.changerCase(1, 0, "Maison");
-                m1.changerCase(1, 1, "Maison");
-                m1.changerCase(2, 0, "Maison");
-                m1.changerCase(2, 1, "Maison");
+                m1.changerCase(0, 0, "home");
+                m1.changerCase(0, 1, "home");
+                m1.changerCase(1, 0, "home");
+                m1.changerCase(1, 1, "home");
+                m1.changerCase(2, 0, "home");
+                m1.changerCase(2, 1, "home");
                 c.setMap(m1);
                 lc.add(c);
             }
             if (f.getName().equals("35.jpg")) {
                 c = new Decret(path + f.getName(),"<HTML> <p style='text-align:center;'> Gagnez un point de réputation <br>pour chaque espace de maison <br>du plus grand groupe d'espace <br>de maison qui n'est pas <br>adjacent à un espace de montagne.</p> </HTML>");
                 Map m1 = new Map(2, 4);
-                m1.changerCase(0, 0, "Maison");
-                m1.changerCase(0, 1, "Maison");
-                m1.changerCase(1, 1, "Maison");
-                m1.changerCase(1, 2, "Maison");
-                m1.changerCase(1, 3, "Maison");
+                m1.changerCase(0, 0, "home");
+                m1.changerCase(0, 1, "home");
+                m1.changerCase(1, 1, "home");
+                m1.changerCase(1, 2, "home");
+                m1.changerCase(1, 3, "home");
                 c.setMap(m1);
                 lc.add(c);
             }
             if (f.getName().equals("36.jpg")) {
                 Map m1 = new Map(3, 3);
                 c = new Decret(path + f.getName(),"<HTML> <p style='text-align:center;'> Gagnez trois points de réputation <br>pour chaque groupe d'espace <br>de maison qui est adjacent <br>à trois espaces typés <br>différent ou plus.</p> </HTML>");
-                m1.changerCase(0, 2, "Montagne");
-                m1.changerCase(1, 0, "Maison");
-                m1.changerCase(1, 1, "Maison");
-                m1.changerCase(1, 2, "Maison");
-                m1.changerCase(2, 0, "Eau");
-                m1.changerCase(2, 1, "Maison");
-                m1.changerCase(2, 2, "Bois");
+                m1.changerCase(0, 2, "mountain");
+                m1.changerCase(1, 0, "home");
+                m1.changerCase(1, 1, "home");
+                m1.changerCase(1, 2, "home");
+                m1.changerCase(2, 0, "water");
+                m1.changerCase(2, 1, "home");
+                m1.changerCase(2, 2, "wood");
                 c.setMap(m1);
                 lc.add(c);
             }
             if (f.getName().equals("37.jpg")) {
                 c = new Decret(path + f.getName(),"<HTML> <p style='text-align:center;'> Gagnez deux points de réputation <br>pour chaque espace de maison <br>du deuxième groupe d'espace <br>de maison le plus grand.</p> </HTML>");
                 Map m1 = new Map(2, 4);
-                m1.changerCase(0, 0, "Maison");
-                m1.changerCase(0, 1, "Maison");
-                m1.changerCase(1, 1, "Maison");
-                m1.changerCase(1, 2, "Maison");
-                m1.changerCase(1, 3, "Maison");
+                m1.changerCase(0, 0, "home");
+                m1.changerCase(0, 1, "home");
+                m1.changerCase(1, 1, "home");
+                m1.changerCase(1, 2, "home");
+                m1.changerCase(1, 3, "home");
                 c.setMap(m1);
                 lc.add(c);
             }
             if (f.getName().equals("38.jpg")) {
                 c = new Decret(path + f.getName(),"<HTML> <p style='text-align:center;'> Gagnez six points de réputation <br>pour chaque ligne ou <br>colonne complètement remplie <br>d'espaces typés.</p> </HTML>");
                 Map m1 = new Map(3, 3);
-                m1.changerCase(0, 0, "Montagne");
-                m1.changerCase(0, 1, "Montagne");
-                m1.changerCase(0, 2, "Montagne");
-                m1.changerCase(1, 0, "Montagne");
-                m1.changerCase(2, 0, "Montagne");
+                m1.changerCase(0, 0, "mountain");
+                m1.changerCase(0, 1, "mountain");
+                m1.changerCase(0, 2, "mountain");
+                m1.changerCase(1, 0, "mountain");
+                m1.changerCase(2, 0, "mountain");
                 c.setMap(m1);
                 lc.add(c);
             }
             if (f.getName().equals("39.jpg")) {
                 c = new Decret(path + f.getName(),"<HTML> <p style='text-align:center;'> Gagnez trois points de réputation <br>pour chaque espace le long <br>du côté du plus grand <br>carré d'espaces typés.</p> </HTML>");
                 Map m1 = new Map(3, 3);
-                m1.changerCase(0, 0, "Montagne");
-                m1.changerCase(0, 1, "Montagne");
-                m1.changerCase(1, 0, "Montagne");
-                m1.changerCase(1, 1, "Montagne");
+                m1.changerCase(0, 0, "mountain");
+                m1.changerCase(0, 1, "mountain");
+                m1.changerCase(1, 0, "mountain");
+                m1.changerCase(1, 1, "mountain");
                 c.setMap(m1);
                 lc.add(c);
             }
             if (f.getName().equals("40.jpg")) {
                 c = new Decret(path + f.getName(),"<HTML> <p style='text-align:center;'> Gagnez trois points de réputation <br>pour chaque diagonale complétement <br>remplies d'espaces typés touchant <br>le bord gauche et le <br>bas de la map.</p> </HTML>");
                 Map m1 = new Map(3, 3);
-                m1.changerCase(0, 0, "Montagne");
-                m1.changerCase(0, 2, "Montagne");
-                m1.changerCase(1, 1, "Montagne");
-                m1.changerCase(2, 0, "Montagne");
+                m1.changerCase(0, 0, "mountain");
+                m1.changerCase(0, 2, "mountain");
+                m1.changerCase(1, 1, "mountain");
+                m1.changerCase(2, 0, "mountain");
                 c.setMap(m1);
                 lc.add(c);
             }
             if (f.getName().equals("41.jpg")) {
                 c = new Decret(path + f.getName(),"<HTML> <p style='text-align:center;'> Gagnez un point de réputation <br>pour chaque espace vide entouré <br>d'espaces typés ou du bord <br>de la map sur chacun <br>de ses quatres côtés.</p> </HTML>");
                 Map m1 = new Map(3, 3);
-                m1.changerCase(0, 1, "Montagne");
-                m1.changerCase(1, 0, "Montagne");
-                m1.changerCase(1, 2, "Montagne");
-                m1.changerCase(2, 1, "Montagne");
+                m1.changerCase(0, 1, "mountain");
+                m1.changerCase(1, 0, "mountain");
+                m1.changerCase(1, 2, "mountain");
+                m1.changerCase(2, 1, "mountain");
                 c.setMap(m1);
                 lc.add(c);
             }
@@ -569,7 +569,7 @@ public class Game {
     }
 
     public ArrayList<Season> Saisons(){
-        String path = "Cards/Season";  //Chemin du dossier des cartes
+        String path = "Cards/Season/";  //Chemin du dossier des cartes
         File p=new File(pathImg + path);
         File[] dossier=p.listFiles(); //Liste contenant tous les dossiers du fichier dans le chemin de la variable chemin
         ArrayList<File> ls=new ArrayList<>();
@@ -641,28 +641,27 @@ public class Game {
         this.impossibleCard = impossibleCard;
     }
 
-
-    public GameCard getCurrent_card() {
-        return current_card;
+    public GameCard getCurrentCard() {
+        return currentCard;
     }
 
-    public void setCurrent_card(GameCard current_card) {
-        this.current_card = current_card;
+    public void setCurrentCard(GameCard currentCard) {
+        this.currentCard = currentCard;
     }
 
-    public Player getCurrent_player() {
-        return current_player;
+    public Player getCurrentPlayer() {
+        return currentPlayer;
     }
 
-    public void setCurrent_player(Player current_player) {
-        this.current_player = current_player;
+    public void setCurrentPlayer(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
     }
 
-    public Season getCurrent_season() {
-        return current_season;
+    public Season getCurrentSeason() {
+        return currentSeason;
     }
 
-    public void setCurrent_season(Season current_season) {
-        this.current_season = current_season;
+    public void setCurrentSeason(Season currentSeason) {
+        this.currentSeason = currentSeason;
     }
 }
