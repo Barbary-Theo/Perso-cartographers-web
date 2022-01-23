@@ -25,7 +25,7 @@
         }
 
         .decretImg {
-            width: 31.5%;
+            width: 30%;
             height: auto;
             margin: 0.5%;
         }
@@ -39,8 +39,8 @@
         }
 
         .cardTodo {
-            width: 17%;
-            height: auto;
+            height: 17%;
+            width: auto;
             margin: 0.5%;
         }
 
@@ -78,7 +78,7 @@
                 for(let i=0 ; i<currentPlayer.map.nbRow ; i++) {
                     let row = `<div class="col-sm-12"> `;
                     for(let j=0 ; j<currentPlayer.map.nbColumn ; j++) {
-                        row += `<img src="Icone/${currentPlayer.map.map[i][j].type}.png" alt="vv" style="width: 3.7%; height: auto"/>`;
+                        row += `<img src="Icone/${currentPlayer.map.map[i][j].type}.png" alt="vv" style="height: 3.7%; width: auto"/>`;
                     }
                     row += `</div>`;
                     map.append(row);
@@ -126,7 +126,7 @@
         $(document).ready(function() {
             cartographers.displayFunction.displayCurrentPlayerInformation();
             cartographers.displayFunction.displayCurrentCardToDo();
-            // cartographers.displayFunction.displaySeasonAndDecret();
+            cartographers.displayFunction.displaySeasonAndDecret();
         })
 
 
