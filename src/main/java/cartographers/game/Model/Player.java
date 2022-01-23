@@ -1,5 +1,7 @@
 package cartographers.game.Model;
 
+import cartographers.game.Model.Map.Map;
+
 public class Player {
 
     private String name;

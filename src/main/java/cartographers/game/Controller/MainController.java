@@ -1,6 +1,7 @@
 package cartographers.game.Controller;
 
 
+import cartographers.game.Model.Game;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ public class MainController {
 
     @GetMapping
     public String getMappingPage(Model model){
+        model.addAttribute("players", Game.getInstance().getPlayers());
         return "main";
     }
 

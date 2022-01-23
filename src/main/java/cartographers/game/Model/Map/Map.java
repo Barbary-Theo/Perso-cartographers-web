@@ -1,4 +1,4 @@
-package cartographers.game.Model;
+package cartographers.game.Model.Map;
 
 public class Map {
 

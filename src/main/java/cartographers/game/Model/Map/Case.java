@@ -1,10 +1,11 @@
-package cartographers.game.Model;
+package cartographers.game.Model.Map;
 
 public class Case {
 
     private int x;
     private int y;
     private String type = "empty";
+    private boolean check;
 
 
     public Case(int x, int y) {
@@ -41,5 +42,13 @@ public class Case {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public boolean isCheck() {
+        return check;
+    }
+
+    public void setCheck(boolean check) {
+        this.check = check;
     }
 }
